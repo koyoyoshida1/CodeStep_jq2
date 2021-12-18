@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+
+body {
+  background-color: #fffbef;
+}
+
+.menu {
+  margin: 100px auto;
+  padding: 0 20px;
+  max-width: 960px;
+
+  h2 {
+    margin-bottom: 50px;
+    font-size: 2rem;
+    font-weight: normal;
+  }
+
+  ul {
+    flex-direction: column;
+
+    li {
+      list-style: none;
+      border-top: solid 1px #000;
+
+      &:last-child {
+        border-bottom: solid 1px #000;
+      }
+    }
+  }
+
+  &_item {
+    cursor: pointer;
+    padding: 40px 30px;
+    font-size: 1.125rem;
+    font-weight: bold;
+    position: relative;
+    transition: .5s;
+
+    &:hover {
+      background-color: #ffda5f;
+    }
+
+    &::before, &::after {
+      content: '';
+      width: 20px;
+      height: 1px;
+      position: absolute;
+      background-color: #000;
+      top: 50%;
+      right: 5%;
+      // top50%だとややズレるのでy軸の中央寄せ
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      // y軸の中央寄せに加えcontentと90度回転させる
+      transform: translateY(-50%) rotate(90deg);
+      transition: .5s;
+    }
+  }
+
+  &_list {
+    border-top: solid 1px #ccc;
+    padding: 35px 30px;
+    display: none;
+
+    dl {
+      display: flex;
+      flex-wrap: wrap;
+    
+      dt {
+        width: 20%;
+        font-weight: bold;
+        margin-bottom: 40px;
+      }
+
+      dd {
+        width: 80%;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+// ネスト構造しすぎるとやばいので適度に調整する
+
+.open {
+  background-color: #ffda5f;
+  
+  &::before {
+    opacity: 0;
+  } 
+  
+  &::after {
+    // 0.5秒かっけてafter要素が180-90度回転する
+    // そもそもrotate90度のやつは関係ないためにこうなる
+    transform: rotate(180deg); 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menu {
+    &_item {
+      padding: 40px 0;
+    }
+
+    &_list {
+      padding: 35px 0;
+
+      dl {
+        flex-direction: column;
+
+        dt {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+
+        dd {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}

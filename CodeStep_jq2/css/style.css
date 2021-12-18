@@ -1,0 +1,129 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  background-color: #fffbef;
+}
+
+.menu {
+  margin: 100px auto;
+  padding: 0 20px;
+  max-width: 960px;
+}
+
+.menu h2 {
+  margin-bottom: 50px;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.menu ul {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.menu ul li {
+  list-style: none;
+  border-top: solid 1px #000;
+}
+
+.menu ul li:last-child {
+  border-bottom: solid 1px #000;
+}
+
+.menu_item {
+  cursor: pointer;
+  padding: 40px 30px;
+  font-size: 1.125rem;
+  font-weight: bold;
+  position: relative;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.menu_item:hover {
+  background-color: #ffda5f;
+}
+
+.menu_item::before, .menu_item::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  position: absolute;
+  background-color: #000;
+  top: 50%;
+  right: 5%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.menu_item::after {
+  -webkit-transform: translateY(-50%) rotate(90deg);
+          transform: translateY(-50%) rotate(90deg);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.menu_list {
+  border-top: solid 1px #ccc;
+  padding: 35px 30px;
+  display: none;
+}
+
+.menu_list dl {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.menu_list dl dt {
+  width: 20%;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.menu_list dl dd {
+  width: 80%;
+  margin-bottom: 40px;
+}
+
+.open {
+  background-color: #ffda5f;
+}
+
+.open::before {
+  opacity: 0;
+}
+
+.open::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+@media screen and (max-width: 600px) {
+  .menu_item {
+    padding: 40px 0;
+  }
+  .menu_list {
+    padding: 35px 0;
+  }
+  .menu_list dl {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .menu_list dl dt {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .menu_list dl dd {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
